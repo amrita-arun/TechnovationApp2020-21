@@ -11,4 +11,5 @@ public class SpeakingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaking2);
     }
+    
 }
