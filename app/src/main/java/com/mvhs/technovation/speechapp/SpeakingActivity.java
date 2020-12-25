@@ -18,6 +18,8 @@ public class SpeakingActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 100;
     private TextView textOutput;
     private String spokenSentence;
+    private TextView sentence;
+    private TextView goodJob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,13 @@ public class SpeakingActivity extends AppCompatActivity {
         questions.add("Today was my birthday, I ate cake and pizza.");
         questions.add("Reading is one of my favorite hobbies.");
         questions.add("My favorite color is blue.");
+
+        sentence = (TextView)findViewById(R.id.sentence);
+    //    sentence.setText("My favorite color is blue.");
+
+        goodJob = (TextView) findViewById(R.id.goodjob);
+        goodJob.setVisibility(View.INVISIBLE);
+
     }
 
 //This method is called with the button is pressed//
@@ -65,6 +74,10 @@ public class SpeakingActivity extends AppCompatActivity {
                 break;
             }
 
+        }
+        if (spokenSentence.equals("My favorite color is blue."))
+        {
+            goodJob.setVisibility(View.VISIBLE);
         }
     }
 
