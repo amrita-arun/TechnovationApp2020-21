@@ -9,6 +9,8 @@ import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class SpeakingActivity extends AppCompatActivity {
@@ -18,21 +20,21 @@ public class SpeakingActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 100;
     private TextView textOutput;
     private String spokenSentence;
-    private TextView sentence;
+    private TextView sentence1;
     private TextView goodJob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_speaking2);
         textOutput= (TextView) findViewById(R.id.textOutput);
         questions.add("Today I went to the park and hung out with my friends.");
         questions.add("Today was my birthday, I ate cake and pizza.");
         questions.add("Reading is one of my favorite hobbies.");
         questions.add("My favorite color is blue.");
 
-        sentence = (TextView)findViewById(R.id.sentence);
-    //    sentence.setText("My favorite color is blue.");
+        sentence1 = (TextView)findViewById(R.id.sentence);
+        sentence1.setText("My favorite color is blue.");
 
         goodJob = (TextView) findViewById(R.id.goodjob);
         goodJob.setVisibility(View.INVISIBLE);
@@ -75,7 +77,7 @@ public class SpeakingActivity extends AppCompatActivity {
             }
 
         }
-        if (spokenSentence.equals("My favorite color is blue."))
+        if (spokenSentence.equals("my favorite color is blue"))
         {
             goodJob.setVisibility(View.VISIBLE);
         }
