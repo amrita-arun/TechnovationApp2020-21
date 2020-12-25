@@ -22,6 +22,7 @@ public class SpeakingActivity extends AppCompatActivity {
     private String spokenSentence;
     private TextView sentence1;
     private TextView goodJob;
+    int question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +34,28 @@ public class SpeakingActivity extends AppCompatActivity {
         questions.add("Reading is one of my favorite hobbies.");
         questions.add("My favorite color is blue.");
 
+        newQuestion();
+
+        /*
+        int question = (int)(Math.random() * questions.size());
         sentence1 = (TextView)findViewById(R.id.sentence);
-        sentence1.setText("My favorite color is blue.");
+        sentence1.setText(questions.get(question));
 
         goodJob = (TextView) findViewById(R.id.goodjob);
         goodJob.setVisibility(View.INVISIBLE);
+        
+         */
 
+    }
+
+    public void newQuestion ()
+    {
+        int question = (int)(Math.random() * questions.size());
+        sentence1 = (TextView)findViewById(R.id.sentence);
+        sentence1.setText(questions.get(question));
+
+        goodJob = (TextView) findViewById(R.id.goodjob);
+        goodJob.setVisibility(View.INVISIBLE);
     }
 
 //This method is called with the button is pressed//
@@ -49,7 +66,7 @@ public class SpeakingActivity extends AppCompatActivity {
 
     {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-
+        goodJob.setVisibility(View.INVISIBLE);
         try
         {
             //Start the Activity and wait for the response
@@ -70,7 +87,7 @@ public class SpeakingActivity extends AppCompatActivity {
             case REQUEST_CODE: {
                 if (resultCode == RESULT_OK && null != data) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    textOutput.setText(result.get(0));
+                 //   textOutput.setText(result.get(0));
                     spokenSentence = result.get(0);
                 }
                 break;
@@ -79,6 +96,11 @@ public class SpeakingActivity extends AppCompatActivity {
         }
         if (spokenSentence.equals("my favorite color is blue"))
         {
+            goodJob.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            goodJob.setText("Try again!");
             goodJob.setVisibility(View.VISIBLE);
         }
     }
