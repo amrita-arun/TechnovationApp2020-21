@@ -35,20 +35,19 @@ private static final int REQUEST_CODE = 100;
     {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
-        try {
-
-//Start the Activity and wait for the response//
-
+        try
+        {
+            //Start the Activity and wait for the response
             startActivityForResult(intent, REQUEST_CODE);
-        } catch (ActivityNotFoundException a) {
+        }
+        catch (ActivityNotFoundException a) {
 
         }
     }
 
     @Override
 
-//Handle the results//
-
+    //Handle the results//
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
