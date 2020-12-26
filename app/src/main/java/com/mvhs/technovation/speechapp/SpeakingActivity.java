@@ -59,9 +59,10 @@ public class SpeakingActivity extends AppCompatActivity {
     public void newQuestion ()
     {
         question = (int)(Math.random() * questions.size());
-        sentence1.setText(questions.get(question));
+        sentence1.setText(questions.get(question) + ".");
         goodJob.setVisibility(View.INVISIBLE);
         nextQuestion.setVisibility(View.INVISIBLE);
+        startSpeaking.setVisibility(View.VISIBLE);
         counter = 0;
     }
 
@@ -116,7 +117,7 @@ public class SpeakingActivity extends AppCompatActivity {
             System.out.println(questions.get(question));
             goodJob.setText("Good job!!");
             goodJob.setVisibility(View.VISIBLE);
-
+            startSpeaking.setVisibility(View.INVISIBLE);
             nextQuestion.setVisibility(View.VISIBLE);
         }
         else
