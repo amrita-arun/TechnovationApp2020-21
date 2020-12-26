@@ -29,10 +29,10 @@ public class SpeakingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaking2);
         textOutput= (TextView) findViewById(R.id.textOutput);
-        questions.add("Today I went to the park and hung out with my friends.");
-        questions.add("Today was my birthday, I ate cake and pizza.");
-        questions.add("Reading is one of my favorite hobbies.");
-        questions.add("My favorite color is blue.");
+        questions.add("Today I went to the park and hung out with my friends");
+        questions.add("Today was my birthday, I ate cake and pizza");
+        questions.add("Reading is one of my favorite hobbies");
+        questions.add("My favorite color is blue");
 
         newQuestion();
 
@@ -43,14 +43,14 @@ public class SpeakingActivity extends AppCompatActivity {
 
         goodJob = (TextView) findViewById(R.id.goodjob);
         goodJob.setVisibility(View.INVISIBLE);
-        
+
          */
 
     }
 
     public void newQuestion ()
     {
-        int question = (int)(Math.random() * questions.size());
+        question = (int)(Math.random() * questions.size());
         sentence1 = (TextView)findViewById(R.id.sentence);
         sentence1.setText(questions.get(question));
 
@@ -77,6 +77,12 @@ public class SpeakingActivity extends AppCompatActivity {
         }
     }
 
+    private boolean sCompare(String s1, String s2)
+    {
+        System.out.println(s1 + " " + s2);
+        return (s1.equalsIgnoreCase(s2.toLowerCase().replaceAll(",","")));
+    }
+
     @Override
 
     //Handle the results//
@@ -94,12 +100,15 @@ public class SpeakingActivity extends AppCompatActivity {
             }
 
         }
-        if (spokenSentence.equals("my favorite color is blue"))
+        if (sCompare(spokenSentence, questions.get(question)))
         {
+            System.out.println(questions.get(question));
             goodJob.setVisibility(View.VISIBLE);
+            newQuestion();
         }
         else
         {
+            System.out.println(questions.get(question));
             goodJob.setText("Try again!");
             goodJob.setVisibility(View.VISIBLE);
         }
