@@ -11,25 +11,15 @@ import android.widget.TextView;
 public class Listening extends AppCompatActivity{
     MediaPlayer mySong;
     private TextView txt;
-    private String answer = "BLUE";
+    private String [] answer = {"Blue", "Dogs"};
+    private int index = (int)(Math.random()*2);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listening);
-        txt = (TextView)findViewById(R.id.textView2);
-    }
-    /*
-    public Listening() {
-       txt = findViewById(R.id.textView3);
-        System.out.println("In here");
-    }
-
-     */
-
-    protected void onCreate() {
-        //setContentView(R.layout.activity_listening);
-        mySong = MediaPlayer.create(Listening.this, R.raw.practice);
+        txt = (TextView)findViewById(R.id.textView3);
+        mySong = MediaPlayer.create(Listening.this, R.raw.practice+index);
     }
 
     public void playIT(View y)
@@ -50,7 +40,6 @@ public class Listening extends AppCompatActivity{
             txt.setVisibility(View.VISIBLE);
             //set a value in the textview
             txt.setText("Correct!");
-            System.out.println("hiya");
         }
         else
         {

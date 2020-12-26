@@ -27,6 +27,7 @@
         android:layout_width="133dp"
         android:layout_height="85dp"
         android:layout_marginBottom="275dp"
+        android:onClick="onClick"
         android:text="Red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3"
@@ -39,6 +40,7 @@
         android:layout_height="89dp"
         android:layout_marginStart="200dp"
         android:layout_marginLeft="200dp"
+        android:onClick="onClick"
         android:text="Blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +51,7 @@
         android:id="@+id/button4"
         android:layout_width="135dp"
         android:layout_height="89dp"
+        android:onClick="onClick"
         android:text="Green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button5"
@@ -62,6 +65,7 @@
         android:layout_marginStart="200dp"
         android:layout_marginLeft="200dp"
         android:layout_marginBottom="225dp"
+        android:onClick="onClick"
         android:text="Pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,10 +90,10 @@
         android:layout_height="52dp"
         android:layout_marginBottom="10dp"
         android:text=" "
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
