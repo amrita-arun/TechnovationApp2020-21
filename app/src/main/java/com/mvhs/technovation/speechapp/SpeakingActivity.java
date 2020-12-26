@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -22,7 +23,10 @@ public class SpeakingActivity extends AppCompatActivity {
     private String spokenSentence;
     private TextView sentence1;
     private TextView goodJob;
+    private Button nextQuestion;
+    private Button startSpeaking;
     int question;
+    int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,10 @@ public class SpeakingActivity extends AppCompatActivity {
         questions.add("Reading is one of my favorite hobbies");
         questions.add("My favorite color is blue");
 
+        sentence1 = (TextView)findViewById(R.id.sentence);
+        goodJob = (TextView) findViewById(R.id.goodjob);
+        nextQuestion = (Button)findViewById(R.id.nextQuestion);
+        startSpeaking = (Button) findViewById(R.id.startDictation);
         newQuestion();
 
         /*
@@ -51,11 +59,10 @@ public class SpeakingActivity extends AppCompatActivity {
     public void newQuestion ()
     {
         question = (int)(Math.random() * questions.size());
-        sentence1 = (TextView)findViewById(R.id.sentence);
         sentence1.setText(questions.get(question));
-
-        goodJob = (TextView) findViewById(R.id.goodjob);
         goodJob.setVisibility(View.INVISIBLE);
+        nextQuestion.setVisibility(View.INVISIBLE);
+        counter = 0;
     }
 
 //This method is called with the button is pressed//
@@ -77,10 +84,14 @@ public class SpeakingActivity extends AppCompatActivity {
         }
     }
 
+    public void clickNextQuestion (View view)
+    {
+        newQuestion();
+    }
     private boolean sCompare(String s1, String s2)
     {
         System.out.println(s1 + " " + s2);
-        return (s1.equalsIgnoreCase(s2.toLowerCase().replaceAll(",","")));
+         return (s1.equalsIgnoreCase(s2.toLowerCase().replaceAll(",","")));
     }
 
     @Override
@@ -103,14 +114,21 @@ public class SpeakingActivity extends AppCompatActivity {
         if (sCompare(spokenSentence, questions.get(question)))
         {
             System.out.println(questions.get(question));
+            goodJob.setText("Good job!!");
             goodJob.setVisibility(View.VISIBLE);
-            newQuestion();
+
+            nextQuestion.setVisibility(View.VISIBLE);
         }
         else
         {
             System.out.println(questions.get(question));
             goodJob.setText("Try again!");
             goodJob.setVisibility(View.VISIBLE);
+            counter++;
+            if (counter == 3)
+            {
+                nextQuestion.setVisibility(View.VISIBLE);
+            }
         }
     }
 
