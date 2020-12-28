@@ -89,6 +89,7 @@
         android:layout_width="133dp"
         android:layout_height="52dp"
         android:layout_marginBottom="10dp"
+        android:freezesText="false"
         android:text=" "
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
