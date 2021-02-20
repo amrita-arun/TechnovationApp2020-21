@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CFE8D8"
     android:visibility="visible"
     tools:context=".RealWorld"
     tools:visibility="visible">
@@ -11,57 +12,90 @@
     <Button
 
         android:id="@+id/record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="88dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="#F3D2BB"
         android:text="RECORD"
+        app:layout_constraintBottom_toTopOf="@+id/stop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
         android:id="@+id/stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="88dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:background="#E5B8C1"
         android:text="STOP"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/play"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/record" />
 
     <Button
         android:id="@+id/play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="88dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="150dp"
+        android:background="#AED5DD"
         android:text="PLAY"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stop" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="211dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="#E5B8C1"
         android:text="Press record to start :)"
+        android:textColor="#FFFFFF"
         android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/record"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totua" />
+        app:layout_constraintTop_toBottomOf="@+id/totua"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/totua"
-        android:layout_width="332dp"
-        android:layout_height="87dp"
+        android:layout_width="315dp"
+        android:layout_height="119dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="#CEABC2"
+        android:fontFamily="casual"
         android:text="Record when you're ready"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.285" />
+
+    <TextView
+        android:id="@+id/TitleText"
+        android:layout_width="302dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="104dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:text="Real World Situations"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
