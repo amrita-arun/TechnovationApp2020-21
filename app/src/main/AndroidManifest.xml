@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mvhs.technovation.speechapp">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORA /GE"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +16,9 @@
         android:supportsRtl="true"
         android:exported="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SpeakingActivity">
+
+
+        <activity android:name=".SpeakingActivity"/>
         <activity android:name=".Listening"></activity>
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
@@ -33,19 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-
     </application>
-
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORA /GE"></uses-permission>
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 </manifest>
