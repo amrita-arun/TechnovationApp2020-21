@@ -17,11 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".SpeakingActivity" />
         <activity android:name=".Listening" />
@@ -34,12 +30,12 @@
             android:label="@string/title_activity_real">
         </activity>
         <activity android:name=".MainActivity">
-           <!-- <intent-filter>
+           <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
         </activity>
 
         <meta-data
