@@ -1,24 +1,36 @@
 package com.mvhs.technovation.speechapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class SpeakingActivity extends AppCompatActivity {
 
     private ArrayList<String> questions = new ArrayList<String>();
 //    private int numQuestions;
     private static final int REQUEST_CODE = 100;
+    private final String TAG = "speakingActivity";
     private String spokenSentence;
     private TextView sentence1;
     private TextView goodJob;
@@ -31,16 +43,47 @@ public class SpeakingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaking2);
+        /*
         questions.add("Today I went to the park and hung out with my friends");
         questions.add("Today was my birthday, I ate cake and pizza");
         questions.add("Reading is one of my favorite hobbies");
         questions.add("My favorite color is blue");
 
+         */
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("speakingQuestions").document("questions");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        //List<String> list = new ArrayList<>();
+
+                        Map<String, Object> map = document.getData();
+                        if (map != null) {
+                            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                                System.out.println(entry.getValue().toString());
+                                questions.add(entry.getValue().toString());
+                            }
+                        }
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        newQuestion();
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
         sentence1 = (TextView)findViewById(R.id.sentence);
         goodJob = (TextView) findViewById(R.id.goodjob);
         nextQuestion = (Button)findViewById(R.id.nextQuestion);
         startSpeaking = (Button) findViewById(R.id.startDictation);
-        newQuestion();
+//        newQuestion();
+
 
         /*
         int question = (int)(Math.random() * questions.size());
@@ -56,8 +99,11 @@ public class SpeakingActivity extends AppCompatActivity {
 
     public void newQuestion ()
     {
+        if (questions == null || questions.size() == 0) {
+            Toast.makeText(this, "An error occurred", Toast.LENGTH_LONG).show();
+        }
         question = (int)(Math.random() * questions.size());
-        sentence1.setText(questions.get(question) + ".");
+        sentence1.setText(questions.get(question));
         goodJob.setVisibility(View.INVISIBLE);
         nextQuestion.setVisibility(View.INVISIBLE);
         startSpeaking.setVisibility(View.VISIBLE);
@@ -90,6 +136,8 @@ public class SpeakingActivity extends AppCompatActivity {
     private boolean sCompare(String s1, String s2)
     {
         System.out.println(s1 + " " + s2);
+        s2 = s2.replaceAll(".", "");
+        System.out.println("modified s2 = " + s2);
          return (s1.equalsIgnoreCase(s2.toLowerCase().replaceAll(",","")));
     }
 
@@ -129,5 +177,6 @@ public class SpeakingActivity extends AppCompatActivity {
             }
         }
     }
+
 
 }
