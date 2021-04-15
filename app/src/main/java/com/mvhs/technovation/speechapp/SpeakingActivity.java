@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.Log;
@@ -19,16 +21,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class SpeakingActivity extends AppCompatActivity {
 
-    private ArrayList<String> questions = new ArrayList<String>();
-//    private int numQuestions;
+    private ArrayList<SpeakingQuestion> questions = new ArrayList<>();
     private static final int REQUEST_CODE = 100;
     private final String TAG = "speakingActivity";
     private String spokenSentence;
@@ -36,20 +34,20 @@ public class SpeakingActivity extends AppCompatActivity {
     private TextView goodJob;
     private Button nextQuestion;
     private Button startSpeaking;
-    int question;
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor;
+    int questionIndex;
     int counter;
+    SpeakingQuestion currentQuestion;
+    private final String MyPREFERENCES = "QuestionsAnsweredPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaking2);
-        /*
-        questions.add("Today I went to the park and hung out with my friends");
-        questions.add("Today was my birthday, I ate cake and pizza");
-        questions.add("Reading is one of my favorite hobbies");
-        questions.add("My favorite color is blue");
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
 
-         */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("speakingQuestions").document("questions");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -58,13 +56,11 @@ public class SpeakingActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        //List<String> list = new ArrayList<>();
-
                         Map<String, Object> map = document.getData();
                         if (map != null) {
                             for (Map.Entry<String, Object> entry : map.entrySet()) {
                                 System.out.println(entry.getValue().toString());
-                                questions.add(entry.getValue().toString());
+                                questions.add(new SpeakingQuestion(entry.getKey(), entry.getValue().toString()));
                             }
                         }
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
@@ -82,19 +78,6 @@ public class SpeakingActivity extends AppCompatActivity {
         goodJob = (TextView) findViewById(R.id.goodjob);
         nextQuestion = (Button)findViewById(R.id.nextQuestion);
         startSpeaking = (Button) findViewById(R.id.startDictation);
-//        newQuestion();
-
-
-        /*
-        int question = (int)(Math.random() * questions.size());
-        sentence1 = (TextView)findViewById(R.id.sentence);
-        sentence1.setText(questions.get(question));
-
-        goodJob = (TextView) findViewById(R.id.goodjob);
-        goodJob.setVisibility(View.INVISIBLE);
-
-         */
-
     }
 
     public void newQuestion ()
@@ -102,26 +85,36 @@ public class SpeakingActivity extends AppCompatActivity {
         if (questions == null || questions.size() == 0) {
             Toast.makeText(this, "An error occurred", Toast.LENGTH_LONG).show();
         }
-        question = (int)(Math.random() * questions.size());
-        sentence1.setText(questions.get(question));
-        goodJob.setVisibility(View.INVISIBLE);
-        nextQuestion.setVisibility(View.INVISIBLE);
-        startSpeaking.setVisibility(View.VISIBLE);
-        counter = 0;
+        //String ques = "";
+        if (questionIndex >= questions.size()) {
+            Toast.makeText(this, "You have answered all questions!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        SpeakingQuestion ques = questions.get(questionIndex);
+        boolean validQ = true;
+        Map<String,?> keys = sharedpreferences.getAll();
+
+            if (!keys.containsKey(ques.getId()))
+            {
+                currentQuestion = ques;
+                sentence1.setText(currentQuestion.getQuestion());
+                goodJob.setVisibility(View.INVISIBLE);
+                nextQuestion.setVisibility(View.INVISIBLE);
+                startSpeaking.setVisibility(View.VISIBLE);
+                counter = 0;
+            }
+            else {
+                ++questionIndex;
+                newQuestion();
+            }
     }
 
-//This method is called with the button is pressed//
-
     public void onClick(View v)
-
-//Create an Intent with “RecognizerIntent.ACTION_RECOGNIZE_SPEECH” action//
-
     {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         goodJob.setVisibility(View.INVISIBLE);
         try
         {
-            //Start the Activity and wait for the response
             startActivityForResult(intent, REQUEST_CODE);
         }
         catch (ActivityNotFoundException a) {
@@ -131,20 +124,21 @@ public class SpeakingActivity extends AppCompatActivity {
 
     public void clickNextQuestion (View view)
     {
+        questionIndex++;
         newQuestion();
     }
+
     private boolean sCompare(String s1, String s2)
     {
         System.out.println("in sCompare");
         System.out.println(s1 + " " + s2);
         s2 = s2.replaceAll("\\p{Punct}", "");
+        s1 = s1.replaceAll("\\p{Punct}", "");
         System.out.println("modified s2 = " + s2);
         return (s1.equalsIgnoreCase(s2.toLowerCase().replaceAll(",","")));
     }
 
     @Override
-
-    //Handle the results//
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -158,17 +152,18 @@ public class SpeakingActivity extends AppCompatActivity {
             }
 
         }
-        if (sCompare(spokenSentence, questions.get(question)))
+        if (sCompare(spokenSentence, currentQuestion.getQuestion()))
         {
-            System.out.println(questions.get(question));
-            goodJob.setText("Good job!!");
+            System.out.println(questions.get(questionIndex));
+            goodJob.setText("Good job!");
             goodJob.setVisibility(View.VISIBLE);
             startSpeaking.setVisibility(View.INVISIBLE);
             nextQuestion.setVisibility(View.VISIBLE);
+            editor.putString(currentQuestion.getId(), currentQuestion.getId()).apply();
         }
         else
         {
-            System.out.println(questions.get(question));
+            System.out.println(questions.get(questionIndex));
             goodJob.setText("Try again!");
             goodJob.setVisibility(View.VISIBLE);
             counter++;
@@ -178,6 +173,4 @@ public class SpeakingActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }

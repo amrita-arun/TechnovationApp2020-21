@@ -1,10 +1,15 @@
 package com.mvhs.technovation.speechapp;
 
-public class SpeakingQuestions
+public class SpeakingQuestion
 {
     private String question;
-    private boolean done;
+    private String id;
 
+    public SpeakingQuestion(String i, String q)
+    {
+        id = i;
+        question = q;
+    }
     public void setQuestion (String q)
     {
         question = q;
@@ -15,13 +20,13 @@ public class SpeakingQuestions
         return question;
     }
 
-    public void setDone (boolean d)
+    public void setId (String i)
     {
-        done = d;
+        id = i;
     }
 
-    public boolean getDone ()
+    public String getId ()
     {
-        return done;
+        return id;
     }
 }
