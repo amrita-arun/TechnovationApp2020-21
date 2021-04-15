@@ -137,7 +137,7 @@ public class SpeakingActivity extends AppCompatActivity {
     {
         System.out.println("in sCompare");
         System.out.println(s1 + " " + s2);
-        s2.replaceAll("\\p{Punct}", "");
+        s2 = s2.replaceAll("\\p{Punct}", "");
         System.out.println("modified s2 = " + s2);
         return (s1.equalsIgnoreCase(s2.toLowerCase().replaceAll(",","")));
     }
