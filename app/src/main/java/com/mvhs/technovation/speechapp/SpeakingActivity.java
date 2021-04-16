@@ -85,7 +85,6 @@ public class SpeakingActivity extends AppCompatActivity {
         if (questions == null || questions.size() == 0) {
             Toast.makeText(this, "An error occurred", Toast.LENGTH_LONG).show();
         }
-        //String ques = "";
         if (questionIndex >= questions.size()) {
             Toast.makeText(this, "You have answered all questions!", Toast.LENGTH_LONG).show();
             return;
