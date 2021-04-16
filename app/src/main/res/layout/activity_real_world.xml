@@ -21,7 +21,7 @@
         app:layout_constraintBottom_toTopOf="@+id/stop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"/>
 
     <Button
         android:id="@+id/stop"
@@ -60,7 +60,6 @@
         android:text="Press record to start"
         android:textColor="#FFFFFF"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/record"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="5dp"
@@ -68,6 +67,7 @@
         android:paddingEnd="10dp"
         android:fontFamily="casual"
         app:layout_constraintTop_toBottomOf="@+id/totua"
+        app:layout_goneMarginTop="15dp"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
