@@ -82,6 +82,7 @@ public class SpeakingActivity extends AppCompatActivity {
         restart =  (Button) findViewById(R.id.restart);
     }
 
+    //public boolean newQuestion ()
     public void newQuestion ()
     {
         if (questions == null || questions.size() == 0) {
@@ -93,8 +94,8 @@ public class SpeakingActivity extends AppCompatActivity {
             nextQuestion.setVisibility(View.INVISIBLE);
             restart.setVisibility(View.VISIBLE);
             startSpeaking.setVisibility(View.INVISIBLE);
-            return;
-           // return false;
+            //return;
+            //return false;
         }
         SpeakingQuestion ques = questions.get(questionIndex);
         boolean validQ = true;
@@ -115,7 +116,7 @@ public class SpeakingActivity extends AppCompatActivity {
             ++questionIndex;
             newQuestion();
         }
-       // return false;
+        //return false;
     }
 
     public void onClick(View v)
