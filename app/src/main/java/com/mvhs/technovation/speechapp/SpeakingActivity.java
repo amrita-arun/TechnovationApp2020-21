@@ -34,6 +34,7 @@ public class SpeakingActivity extends AppCompatActivity {
     private TextView goodJob;
     private Button nextQuestion;
     private Button startSpeaking;
+    private Button restart;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
     int questionIndex;
@@ -78,6 +79,7 @@ public class SpeakingActivity extends AppCompatActivity {
         goodJob = (TextView) findViewById(R.id.goodjob);
         nextQuestion = (Button)findViewById(R.id.nextQuestion);
         startSpeaking = (Button) findViewById(R.id.startDictation);
+        restart =  (Button) findViewById(R.id.restart);
     }
 
     public void newQuestion ()
@@ -86,26 +88,34 @@ public class SpeakingActivity extends AppCompatActivity {
             Toast.makeText(this, "An error occurred", Toast.LENGTH_LONG).show();
         }
         if (questionIndex >= questions.size()) {
+
             Toast.makeText(this, "You have answered all questions!", Toast.LENGTH_LONG).show();
+            nextQuestion.setVisibility(View.INVISIBLE);
+            restart.setVisibility(View.VISIBLE);
+            startSpeaking.setVisibility(View.INVISIBLE);
             return;
+           // return false;
         }
         SpeakingQuestion ques = questions.get(questionIndex);
         boolean validQ = true;
         Map<String,?> keys = sharedpreferences.getAll();
 
-            if (!keys.containsKey(ques.getId()))
-            {
-                currentQuestion = ques;
-                sentence1.setText(currentQuestion.getQuestion());
-                goodJob.setVisibility(View.INVISIBLE);
-                nextQuestion.setVisibility(View.INVISIBLE);
-                startSpeaking.setVisibility(View.VISIBLE);
-                counter = 0;
-            }
-            else {
-                ++questionIndex;
-                newQuestion();
-            }
+        if (!keys.containsKey(ques.getId()))
+        {
+            currentQuestion = ques;
+            sentence1.setText(currentQuestion.getQuestion());
+            startSpeaking.setVisibility(View.VISIBLE);
+            restart.setVisibility(View.INVISIBLE);
+            goodJob.setVisibility(View.INVISIBLE);
+            nextQuestion.setVisibility(View.INVISIBLE);
+            counter = 0;
+            //return true;
+        }
+        else {
+            ++questionIndex;
+            newQuestion();
+        }
+       // return false;
     }
 
     public void onClick(View v)
@@ -121,6 +131,12 @@ public class SpeakingActivity extends AppCompatActivity {
         }
     }
 
+    public void clickRestart (View view)
+    {
+        editor.clear().commit();
+        questionIndex = 0;
+        newQuestion();
+    }
     public void clickNextQuestion (View view)
     {
         questionIndex++;
