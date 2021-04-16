@@ -130,9 +130,100 @@
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/angry_btn"
+
+        android:layout_width="42dp"
+        android:layout_height="38dp"
+        android:background="@drawable/buttonshape"
+
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="99dp"
+        tools:text=" " />
+
+    <Button
+        android:id="@+id/angry_btn1"
+        android:layout_width="64dp"
+        android:layout_height="58dp"
+        android:background="@drawable/buttonshape1"
+
+        android:text=" "
+        android:textColor="#FFFFFF"
+        android:textSize=" sp"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="54dp" />
+
+    <Button
+        android:id="@+id/angry_btn2"
+
+        android:layout_width="68dp"
+        android:layout_height="64dp"
+        android:background="@drawable/buttonshape2"
+
+        android:text=" "
+        android:textColor="#FFFFFF"
+        android:textSize=" sp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/angry_btn3"
+
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:background="@drawable/buttonshape3"
+
+        android:text=" "
+        android:textColor="#FFFFFF"
+        android:textSize=" sp"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="24dp" />
+
+    <Button
+        android:id="@+id/angry_btn4"
+
+        android:layout_width="45dp"
+        android:layout_height="44dp"
+        android:background="@drawable/buttonshape"
+
+        android:text=" "
+        android:textColor="#FFFFFF"
+        android:textSize=" sp"
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="20dp" />
+
+    <Button
+        android:id="@+id/angry_btn5"
+
+        android:layout_width="65dp"
+        android:layout_height="57dp"
+        android:background="@drawable/buttonshape3"
+
+        android:text=" "
+        android:textColor="#FFFFFF"
+        android:textSize=" sp"
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <Button
+        android:id="@+id/angry_btn6"
+
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:background="@drawable/buttonshape2"
+
+        android:text=" "
+        android:textColor="#FFFFFF"
+        android:textSize=" sp"
+        tools:layout_editor_absoluteX="356dp"
+        tools:layout_editor_absoluteY="26dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
