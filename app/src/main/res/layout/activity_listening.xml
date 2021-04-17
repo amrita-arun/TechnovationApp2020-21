@@ -12,7 +12,7 @@
         android:id="@+id/button"
         android:layout_width="108dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="200dp"
         android:backgroundTint="#E8D0AC"
         android:onClick="playIT"
         android:text="Play Audio"
@@ -28,7 +28,7 @@
         android:id="@+id/button2"
         android:layout_width="136dp"
         android:layout_height="84dp"
-        android:layout_marginBottom="275dp"
+        android:layout_marginBottom="200dp"
         android:backgroundTint="#C3A3C8"
         android:onClick="onClick"
         android:textColor="#FFFFFF"
@@ -76,7 +76,7 @@
         android:layout_width="142dp"
         android:layout_height="83dp"
         android:layout_marginStart="200dp"
-        android:layout_marginBottom="225dp"
+        android:layout_marginBottom="110dp"
         android:backgroundTint="#C3A3C8"
         android:onClick="onClick"
         android:text="Pink"
@@ -87,13 +87,13 @@
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.673" />
+        app:layout_constraintVertical_bias="0.518" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="300dp"
         android:layout_height="96dp"
-        android:layout_marginBottom="430dp"
+        android:layout_marginBottom="300dp"
         android:background="#E8B7C8"
         android:fontFamily="sans-serif-medium"
         android:text="Click on the Audio button below to hear a short passage. Answer the question asked at the end of the audio."
@@ -102,10 +102,10 @@
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintVertical_bias="0.755" />
 
     <TextView
         android:id="@+id/textView3"
@@ -150,8 +150,10 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946"
         tools:text=" " />
 
     <Button
@@ -256,9 +258,9 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.375" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
