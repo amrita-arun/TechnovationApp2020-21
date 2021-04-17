@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "500378710372",
+    "project_id": "panda-speaks",
+    "storage_bucket": "panda-speaks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500378710372:android:da92820718b3313577ca71",
+        "android_client_info": {
+          "package_name": "com.mvhs.technovation.speechapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500378710372-sr88m20nrgd56mkgpqgdrf86cs3m85im.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0rSaaorm6eRKoJ8mfB3_7X8lc5ms4rqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500378710372-sr88m20nrgd56mkgpqgdrf86cs3m85im.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
