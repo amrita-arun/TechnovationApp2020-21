@@ -94,7 +94,7 @@ public class SpeakingActivity extends AppCompatActivity {
             nextQuestion.setVisibility(View.INVISIBLE);
             restart.setVisibility(View.VISIBLE);
             startSpeaking.setVisibility(View.INVISIBLE);
-            //return;
+            return;
             //return false;
         }
         SpeakingQuestion ques = questions.get(questionIndex);
