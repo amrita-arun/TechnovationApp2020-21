@@ -38,7 +38,6 @@ public class RealWorld extends AppCompatActivity {
 
 
         String[] questions = new String[15];
-        File data = new File("/Users/sally/Documents/Android Folder/TechnovationApp2020-21/app/src/main/java/com/mvhs/technovation/speechapp/RealQuestions.txt");
 
         BufferedReader reader = null;
         try {

@@ -54,7 +54,7 @@
         android:id="@+id/textView6"
         android:layout_width="211dp"
         android:layout_height="28dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:background="#E5B8C1"
         android:text="Press record to start"

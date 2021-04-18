@@ -17,21 +17,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".SpeakingActivity" />
-        <activity android:name=".Listening" />
+        <activity android:name=".LoginActivity"  android:screenOrientation="portrait"> </activity>
+        <activity android:name=".SpeakingActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".Listening"  android:screenOrientation="portrait" />
 
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-        <activity
-            android:name=".RealWorld"
-            android:label="@string/title_activity_real">
+        <activity android:name=".RealWorld" android:screenOrientation="portrait" android:label="@string/title_activity_real">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"  android:screenOrientation="portrait">
            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

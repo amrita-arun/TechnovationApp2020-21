@@ -33,9 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickRealWorld (View view)
     {
+
         Intent intent = new Intent(this, RealWorld.class);
         startActivity(intent);
     }
+
+    public void onClickGame (View view)
+    {
+        Intent intent = new Intent(this, PongMain.class);
+        startActivity(intent);
+    }
+
+
 
     public void onClickSpeaking (View view)
     {

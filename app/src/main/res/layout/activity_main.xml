@@ -11,50 +11,51 @@
 
     <Button
         android:id="@+id/listening"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_marginTop="110dp"
         android:background="#E5B8C1"
         android:onClick="onClickListening"
+        android:layout_marginStart="50dp"
         android:text="listening"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/realWorld"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:background="#F3D2BB"
         android:onClick="onClickRealWorld"
         android:text="real world"
+        android:layout_marginTop="110dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/listening" />
+        android:layout_marginEnd="50dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/speaking"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:background="#CCE4E9"
         android:onClick="onClickSpeaking"
         android:text="speaking"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/realWorld" />
+        android:layout_marginStart="50dp"
+        app:layout_constraintTop_toBottomOf="@id/listening" />
 
     <Button
         android:id="@+id/game"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:background="#CEABC2"
+        android:onClick="onClickGame"
         android:text="game"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/speaking" />
+        android:layout_marginEnd="50dp"
+        app:layout_constraintTop_toBottomOf="@id/realWorld" />
 
     <TextView
         android:id="@+id/appTitle"
@@ -68,4 +69,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="210dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/speechbubblecropped"
+        tools:layout_editor_absoluteX="182dp"
+        tools:layout_editor_absoluteY="399dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="170dp"
+        />
+
+    <ImageView
+        android:id="@+id/panda"
+        android:layout_width="162dp"
+        android:layout_height="253dp"
+        app:srcCompat="@drawable/pandacropped"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="421dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="40dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
