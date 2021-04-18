@@ -25,14 +25,15 @@ public class Listening extends AppCompatActivity{
     private Button answer3;
     private Button answer4;
     private String [] solution = {"She did not do her homework", "Owns a book shop", "Play tag", "Bad",
-    "Sportive"};
+    "Sportive", "Lunch", "Because of covid", "His foot", "Fish", "A friend"};
     private String[] possible1 = {"She did not eat breakfast", "Is a librarian", "Shop", "Easy",
-    "Sportive"};
+    "Sportive", "A watch", "Because of covid", "His glasses", "Dog", "A friend"};
     private String[] possible2 = {"She hated the video game she bought", "Owns a book shop", "Play tag", "Fun",
-    "Smart"};
+    "Smart", "A purse", "Because she had no friends", "His arm", "Cat", "A brother"};
     private String[] possible3 = {"She did not do her homework", "Works at school", "Read", "Good",
-    "Stylish"};
-    private String[] possible4 = {"Her mom hated her", "Works hard", "Bike", "Bad", "Pretty"};
+    "Stylish", "Lunch", "Because she wanted alone", "His foot", "Fish", "A neighbor"};
+    private String[] possible4 = {"Her mom hated her", "Works hard", "Bike", "Bad", "Pretty", "A shirt"
+    , "Because she liked staying indoors", "His teeth", "Parrot", "A stranger"};
     private int index;
     private boolean change;
     SharedPreferences sharedPref;
@@ -69,7 +70,7 @@ public class Listening extends AppCompatActivity{
     {
         Map<String,?> keys = sharedPref.getAll();
 
-        if(index == 4)
+        if(index == 9)
         {
             index = -1;
             keys.clear();
