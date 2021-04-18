@@ -24,30 +24,28 @@ public class Listening extends AppCompatActivity{
     private Button answer2;
     private Button answer3;
     private Button answer4;
-    private String [] solution = {"Blue", "Dog"};
-    private String[] possible1 = {"RED", "CAT"};
-    private String[] possible2 = {"ORANGE", "DOG"};
-    private String[] possible3 = {"BLUE", "FISH"};
-    private String[] possible4 = {"PINK", "ZEBRA"};
-    private int index = (int)(Math.random()*2);
-    private ArrayList<Integer> questions = new ArrayList<>();
+    private String [] solution = {"She did not do her homework", "Owns a book shop", "Play tag", "Bad",
+    "Sportive"};
+    private String[] possible1 = {"She did not eat breakfast", "Is a librarian", "Shop", "Easy",
+    "Sportive"};
+    private String[] possible2 = {"She hated the video game she bought", "Owns a book shop", "Play tag", "Fun",
+    "Smart"};
+    private String[] possible3 = {"She did not do her homework", "Works at school", "Read", "Good",
+    "Stylish"};
+    private String[] possible4 = {"Her mom hated her", "Works hard", "Bike", "Bad", "Pretty"};
+    private int index;
     private boolean change;
     SharedPreferences sharedPref;
-    //SharedPreferences sharedpreferences;
-    //SharedPreferences.Editor editor;
-    //private final String MyPREFERENCES = "QuestionsAnsweredPrefs";
+    SharedPreferences.Editor editor;
+    private final String MyPrefs = "QuestionsList";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listening);
-        //sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        //editor = sharedpreferences.edit();
-        questions.add(index);
-        sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt("Question Number", index);
-        editor.apply();
+        sharedPref = getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
+        index = -1;
+        change = true;
 
         txt = (TextView)findViewById(R.id.textView3);
         answer1  = (Button)findViewById(R.id.button2);
@@ -57,10 +55,7 @@ public class Listening extends AppCompatActivity{
         if(change == true)
         {
             txt.setVisibility(View.INVISIBLE);
-            do {
-                index = newQuestion();
-            }
-            while(index == -1);
+            newQuestion();
             change = false;
         }
         answer1.setText(possible1[index]);
@@ -70,16 +65,25 @@ public class Listening extends AppCompatActivity{
         mySong = MediaPlayer.create(Listening.this, R.raw.practice+index);
     }
 
-    public int newQuestion()
+    public void newQuestion()
     {
         Map<String,?> keys = sharedPref.getAll();
 
-        if (!keys.containsKey(index)) {
-            return (int) (Math.random() * 2);
+        if(index == 4)
+        {
+            index = -1;
+            keys.clear();
+            getSharedPreferences(MyPrefs, Context.MODE_PRIVATE).edit().clear().apply();
+        }
+        index++;
+        if (!keys.containsKey("Question Number" + index))
+        {
+            editor = sharedPref.edit();
+            editor.putInt("Question Number" + index, index).apply();
         }
         else
         {
-            return -1;
+            newQuestion();
         }
     }
 
@@ -92,7 +96,7 @@ public class Listening extends AppCompatActivity{
         answer4  = (Button)findViewById(R.id.button5);
         if(change == true)
         {
-            index = (int)(Math.random()*2);
+            newQuestion();
             change = false;
         }
         answer1.setText(possible1[index]);
@@ -128,7 +132,7 @@ public class Listening extends AppCompatActivity{
                 {
                     calledAgain();
                 }
-            }, 5000);
+            }, 1500);
         }
         else
         {
