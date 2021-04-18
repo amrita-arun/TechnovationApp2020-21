@@ -169,7 +169,7 @@
         android:layout_marginLeft="10dp"
 
         android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginStart="140dp"
         android:layout_marginBottom="10dp"
 
         android:background="@drawable/buttonshape1"
@@ -177,7 +177,6 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -233,7 +232,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="130dp"
 
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="30dp"
 
@@ -241,7 +240,6 @@
         android:text=" "
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
@@ -254,7 +252,7 @@
         android:layout_width="55dp"
         android:layout_height="48dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="70dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="60dp"
 
@@ -262,7 +260,6 @@
         android:text=" "
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
@@ -275,15 +272,14 @@
         android:layout_width="26dp"
         android:layout_height="24dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/buttonshape2"
 
         android:text=" "
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="parent"
